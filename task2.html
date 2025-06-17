@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Radha</title>
+  <link rel="stylesheet" href="task2.css">
+</head>
+<body>
+  <div class="contact-container">
+    <div class="contact-card">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+        <p id="form-msg"></p>
+      </form>
+    </div>
+  </div>
+
+  <script >
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  const msgBox = document.getElementById("form-msg");
+
+  if (!name || !email || !message) {
+    msgBox.textContent = "All fields are required.";
+    msgBox.style.color = "#ff6b6b";
+    return;
+  }
+
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(emailPattern)) {
+    msgBox.textContent = "Enter a valid email.";
+    msgBox.style.color = "#ff6b6b";
+    return;
+  }
+
+  msgBox.textContent = "Message sent successfully!";
+  msgBox.style.color = "#90ee90";
+  this.reset();
+});
+
+  </script>
+</body>
+</html>
